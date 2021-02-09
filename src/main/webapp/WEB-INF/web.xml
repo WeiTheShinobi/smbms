@@ -6,6 +6,15 @@
          version="4.0"
          metadata-complete="true">
 
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.weitheshinobi.servlet.user.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login.do</url-pattern>
+    </servlet-mapping>
+    
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>com.weitheshinobi.filter.CharacterEncodingFilter</filter-class>
@@ -14,5 +23,9 @@
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
 
 </web-app>
