@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService{
         userDao = new UserDaoImpl();
     }
 
-    public User login(String userCode, String passWord) {
+    public User login(String userCode, String userPassword) {
         Connection connection = null;
         User user = null;
 
@@ -28,6 +28,13 @@ public class UserServiceImpl implements UserService{
         } finally {
             BaseDao.closeResoucre(connection,null,null);
         }
+
+        if(user != null){
+            if(!user.getUserPassword().equals(userPassword)){
+                user = null;
+            }
+        }
+
         return user;
     }
 }
