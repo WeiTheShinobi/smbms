@@ -15,9 +15,9 @@ public class UserDaoImpl implements UserDao{
         User user = null;
 
         if(connection != null){
-            String url = "SELECT * FROM smbms_user WHERE userCode=?";
+            String sql = "SELECT * FROM smbms_user WHERE userCode=?";
             Object[] parms = {userCode};
-            resultSet = BaseDao.execute(connection,preparedStatement,resultSet,url,parms);
+            resultSet = BaseDao.execute(connection,preparedStatement,resultSet,sql,parms);
             if(resultSet.next()){
                 user = new User();
                 user.setId(resultSet.getInt("id"));
@@ -37,5 +37,20 @@ public class UserDaoImpl implements UserDao{
             BaseDao.closeResoucre(null,preparedStatement,resultSet);
         }
         return user;
+    }
+
+    public int updatePwd(Connection connection,int id,String password) throws SQLException {
+
+        String sql = "UPDATE smbms_user SET userPassword = ? WHERE id = ?";
+        PreparedStatement preparedStatement = null;
+        int execute = 0;
+        Object params[] = {password,id};
+
+        if(connection!=null){
+            execute = BaseDao.execute(connection, preparedStatement, sql, params);
+            BaseDao.closeResoucre(null,preparedStatement,null);
+        }
+
+        return execute;
     }
 }
