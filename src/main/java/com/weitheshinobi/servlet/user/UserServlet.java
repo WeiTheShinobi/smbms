@@ -24,7 +24,7 @@ public class UserServlet extends HttpServlet {
 
         if(method.equals("savepwd") && method!=null){
             this.updatePwd(req,resp);
-        }else if(method.equals("pwdmodify") &&method!=null){
+        }else if(method.equals("pwdmodify") && method!=null){
             this.pwdModify(req,resp);
         }
     }
