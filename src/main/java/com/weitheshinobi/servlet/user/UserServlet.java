@@ -60,15 +60,15 @@ public class UserServlet extends HttpServlet {
         String oldpassword = req.getParameter("oldpassword");
         Map<String, String> resultMap = new HashMap<String, String>();
 
-        if(o == null){//session过期
+        if(o == null){
             resultMap.put("result", "sessionerror");
-        }else if(StringUtils.isNullOrEmpty(oldpassword)){//旧密码输入为空
+        }else if(StringUtils.isNullOrEmpty(oldpassword)){
             resultMap.put("result", "error");
         }else{
             String sessionPwd = ((User)o).getUserPassword();
             if(oldpassword.equals(sessionPwd)){
                 resultMap.put("result", "true");
-            }else{//旧密码输入不正确
+            }else{
                 resultMap.put("result", "false");
             }
         }
