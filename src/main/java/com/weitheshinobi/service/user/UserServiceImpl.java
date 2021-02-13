@@ -55,4 +55,19 @@ public class UserServiceImpl implements UserService{
 
         return flag;
     }
+
+    public int getUserCount(String userName, int userRole) {
+
+        Connection connection = null;
+        int userCount = 0;
+        try {
+            connection = BaseDao.getConnection();
+            userCount = userDao.getUserCount(connection, userName, userRole);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            BaseDao.closeResoucre(connection,null,null);
+        }
+        return userCount;
+    }
 }

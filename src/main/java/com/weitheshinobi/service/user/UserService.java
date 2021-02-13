@@ -9,4 +9,6 @@ public interface UserService {
     public User login(String userCode,String passWord);
 
     public boolean updatePwd(int id , String password);
+
+    public int getUserCount(String userName,int userRole);
 }
